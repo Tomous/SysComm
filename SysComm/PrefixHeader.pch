@@ -1,0 +1,121 @@
+//
+//  PrefixHeader.pch
+//  MaxScreenContacts
+//
+//  Created by maxscrenn on 15/12/16.
+//  Copyright © 2015年 maxscrenn. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+//        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:@"您的输入信息有误，请重新输入！" preferredStyle:UIAlertControllerStyleAlert];
+//        UIAlertAction *cancleAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:nil];
+//        [alertController addAction:cancleAction];
+//        [self presentViewController:alertController animated:YES completion:nil];
+
+/**
+ * 随机色
+ */
+#define kRandomColor [UIColor colorWithRed:arc4random()%255/255.0 green:arc4random()%255/255.0 blue:arc4random()%255/255.0 alpha:0.5];
+
+/**
+ *  处理Alert
+ */
+#define VC_ALERT(title,msg,done) [[[UIAlertView alloc] initWithTitle:title message:msg delegate:nil cancelButtonTitle:done otherButtonTitles:nil] show]
+
+
+
+#ifdef DEBUG  // 调试
+
+#define DCLog(...) NSLog(__VA_ARGS__)
+
+#else   // release 发布
+
+#define DCLog(...)
+
+#endif
+
+/**
+ *  后台接口
+ */
+//thief@maxscreen.cn   adminiis
+//#define Base_URL @"http://119.161.229.68:8527"
+
+//#define Base_URL @"http://192.168.1.10"
+#define Base_URL @"http://api.maxscreen.cn/v1"
+//#define Base_URL @"http://192.168.1.15:8080"
+
+//登录
+#define GetLogin_URL [NSString stringWithFormat:@"%@/service/auth",Base_URL]
+//最新同事
+#define GetNewFriend_URL [NSString stringWithFormat:@"%@/service/newColleagues",Base_URL]
+//找回密码
+#define GetFindPasswd_URL [NSString stringWithFormat:@"%@/service/forgetPasswd",Base_URL]
+//发现短信
+#define GetSendSms_URL [NSString stringWithFormat:@"%@/service/smsSend",Base_URL]
+//修改密码
+#define GetChangePasswd_URL [NSString stringWithFormat:@"%@/service/resetPasswd",Base_URL]
+//全部同事
+#define GetAllFriend_URL [NSString stringWithFormat:@"%@/service/workmateAll",Base_URL]
+//我的个人资料
+#define GetMyMessage_URL [NSString stringWithFormat:@"%@/service/selfInfo",Base_URL]
+//修改-手机号码
+#define GetUpdateMobile_URL [NSString stringWithFormat:@"%@/service/updateMobile",Base_URL]
+//修改-微信号码
+#define GetUpdateWeixin_URL [NSString stringWithFormat:@"%@/service/updateWeixin",Base_URL]
+//修改-QQ号码
+#define GetUpdateQQ_URL [NSString stringWithFormat:@"%@/service/updateQQ",Base_URL]
+//获取-手机验证码
+#define GetYanzheng_URL [NSString stringWithFormat:@"%@/service/sendSmsCaptcha",Base_URL]
+//TA的个人资料
+#define GetHisList_URL [NSString stringWithFormat:@"%@/service/workmateByuid",Base_URL]
+//高级搜索
+#define GetSearch_URL [NSString stringWithFormat:@"%@/service/workmateSeek",Base_URL]
+//上传个人头像
+#define GetPersonalPhoto_URL [NSString stringWithFormat:@"%@/service/uploadFile",Base_URL]
+//历史记录
+#define GetHistory_URL [NSString stringWithFormat:@"%@/service/refreshHistory",Base_URL]
+
+
+//颜色
+#define DCColor(r,g,b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1.0]
+
+
+#define DCTextColor DCColor(102.0, 102.0, 102.0)
+//输入框里面内容的颜色
+#define DCTextFieldColor DCColor(144.0, 144.0, 144.0)
+//登录背景的颜色
+#define DCBackgroundColor DCColor(239.0, 239.0, 244.0)
+
+
+// ios7
+#define iOS7 ([UIDevice currentDevice].systemVersion.doubleValue >= 7.0)
+
+#define DCScreenW [UIScreen mainScreen].bounds.size.width
+#define DCScreenH [UIScreen mainScreen].bounds.size.height
+
+
+/**
+ *  导入头文件
+ */
+#import "UIView+Extension.h"
+#import "UIBarButtonItem+Extension.h"
+#import "UIImage+Extension.h"
+#import "MJExtension.h"
+#import "AFNetworking.h"
+#import "MBProgressHUD+MJ.h"
+#import "UIImageView+WebCache.h"
+
+#import "DCHttpTool.h"
+#import "DCResponseModel.h"
+#import "DCDataModel.h"
+#import "DCNewFriendsModel.h"
+#import "DCAccountTool.h"
+#import "DCAlertLabel.h"
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+
+
+#endif /* PrefixHeader_pch */

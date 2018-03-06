@@ -1,0 +1,34 @@
+{
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+    "f817154c-4a78-4790-b99f-9ece097816b6++4368" : {
+
+    },
+    "f817154c-4a78-4790-b99f-9ece097816b6++664" : {
+
+    }
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "f817154c-4a78-4790-b99f-9ece097816b6++4368" : 0,
+    "f817154c-4a78-4790-b99f-9ece097816b6++664" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "4AF0CE52-3564-4488-9017-EC748BBA2951",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "f817154c-4a78-4790-b99f-9ece097816b6++4368" : "SysComm\/",
+    "f817154c-4a78-4790-b99f-9ece097816b6++664" : "%E8%AE%AF%E9%80%9A\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "讯通",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "讯通.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "svn:\/\/192.168.1.253\/devm",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "f817154c-4a78-4790-b99f-9ece097816b6++4368"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "svn:\/\/192.168.1.253\/devm",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "f817154c-4a78-4790-b99f-9ece097816b6++664"
+    }
+  ]
+}

@@ -1,0 +1,143 @@
+/* 
+  Localizable.strings
+  讯通
+
+  Created by 许大成 on 16/1/11.
+  Copyright © 2016年 许大成. All rights reserved.
+*/
+
+"MAXSCREEN_LOGOING" = "大银幕（北京）电影发行控股有限公司";
+
+//tabBar
+"TABBAR_CONTACTS" = "部门同事";
+"TABBAR_RECENT" = "最近查看";
+"TABBAR_SEARCH" = "搜索同事";
+"TABBAR_PERSONAL" = "个人资料";
+
+//登录页面
+"USER_LOGIN" = "用户登录";
+"CATION_USERNAME" = "请输入手机号或邮箱地址";
+"CAPTION_PASSWORD" = "输入您的密码";
+"CAPTION_RECAPTCHA" = "请输入验证码";
+"RECAPTCHA_REFRESH" = "看不清？换一张";
+"LOGIN" = "登录";
+"LOST_PASSWORD" = "找回密码";
+"ERROR_INFO_INCORRECT" = "您的信息输入有误，请重新输入!";
+"ERROR_ACCOUNT_FORMAT_INCORRECT" = "账号格式错误，请重新输入!";
+"ERROR_PWD_TOO_SHORT" = "密码长度不足，请重新输入!";
+
+
+//找回密码页面
+"FULLNAME" = "姓     名 :";
+"CAPTION_FULLNAME" = "请输入您的真实姓名";
+"CELL_NUM" = "手机号码 :";
+"CAPTION_CELL_NUM" = "输入您的手机号码";
+"IDNUM" = "身份证号 :";
+"CAPTION_IDNUM" = "输入您真实的身份证号码";
+"BACK" = "返回";
+
+//通讯录首页
+"CONTACTS" = "通讯录";
+"LATEST_COLL" = "最新同事";
+"RECENT_VIEWED" = "最近查看";
+"MORE" = "更多";
+"CLEAR_HISTORY" = "清空历史记录";
+"SURE_CLEAR_HISTORY" = "确定清空历史记录？";
+"OK" = "确定";
+"CANCEL" = "取消";
+"NO_VIEWED_RECORD" = "暂无查看记录";
+"DEL" = "删除";
+"PROMPT_DEL_VIEW_ITEM" = "删除您浏览的这条记录";
+"PERSONLIST_HOME" = "部门同事";
+
+//搜索页面
+"CAPTION_SEARCH" = "姓名、拼音、号码等";
+"SEARCH_CONTACTSE" = "搜索同事";
+
+//同事资料页面
+"CONTACT_COLL" = "联系同事";
+"AGO_MINUTE" = "分钟前";
+"AGO_HOUR" = "小时前";
+"AGO_DAY" = "天前";
+"AGO_MONTH" = "一个月前";
+"PROMPT_LACK_TEL_NUM" = "对方暂无座机号";
+"PROMPT_LACK_CELL_NUM" = "对方暂无手机号";
+"PROMPT_LACK_EMAIL_NUM" = "对方暂无邮箱号";
+"PROMPT_LACK_WECHAT_NUM" = "对方暂无微信号";
+"PROMPT_LACK_QQ_NUM" = "对方暂无QQ号";
+"RELATION_TEL_NUM" = "拨打座机";
+"RELATION_CELL_NUM" = "拨打手机";
+"RELATION_SEND_SMS" = "发送短信";
+"PREFIX_SMS" = "您好！我是大银幕的";
+"RELATION_SEND_EMAIL" = "发送邮件";
+"RELATION_WECHAT_NUM" = "微信联系";
+"RELATION_QQ_NUM" = "QQ联系";
+"PROMPT_WECHAT_NUM_COPIED" = "已复制对方微信号";
+"PROMPT_QQ_NUM_COPIED" = "已复制对方QQ号";
+"ERROR_QQ_NOT_INSTALLED" = "您的手机没有安装QQ";
+"PERSONAL_MESSAGE" = "该用户已离职!";
+
+//个人资料页面;
+"PROFILE" = "个人资料";
+"CELL_NUM" = "手机号码:";
+"WECHAT_NUM" = "微 信 号:";
+"QQ_NUM" = "Q  Q  号:";
+"USE_CAMERA" = "拍照";
+"CHOOSE_PHOTOS" = "从相册选择";
+"CANCEL" = "取消";
+"CHANGE_PASSWORD" = "修改密码";
+"LOGOUT" = "退出登录";
+
+//修改密码页面
+"CURRENT_PASSWORD" = "当前密码 : ";
+"CAPTION_CURRENT_PASSWORD" = "请输入您当前密码";
+"NEW_PASSWORD" = "新 密 码 : ";
+"CAPTION_NEW_PASSWORD" = "输入您的新密码";
+"REPEAT_PASSWORD" = "重复新密码: ";
+"CAPTION_REPEAT_PASSWORD" = "请重复输入您的新密码";
+"ERROR_OLDPWD_AND_NEWPWD" = "两次密码输入不一致，请重新输入！";
+"SHOW_PASSWORD" = "显示密码";
+"ERROR_PASSWD_LENGTH" = "密码长度低于6位，请重新输入！";
+"ERROR_NEWPASSWD_AND_OLDPASSWD" = "新旧密码不能相同！";
+"ERROR_INFO_PASSWD" = "您的密码输入有误，请重新输入!";
+"CHANGE" = "修改密码";
+
+//退出登录页面
+"PROMPT_LOGOUT" = "您确定退出当前账号";
+"YES" = "确定";
+
+//验证手机号页面
+"VERIFY_CELL_NUM" = "验证手机号码";
+"PROMPT_VERIFY_CELL_NUM" = "请点击获取按钮接收验证码短信";
+"CAPTION_VERIFY_CODE" = "请输入验证码";
+"OBTAIN_VERIFY_CODE" = "获取验证码";
+"RESEND" = "重新发送";
+"PROMPT_VERIFY_CODE_SEND" = "验证码短信已发送到您的手机";
+"VERIFY" = "验证";
+"ERROR_NUM_EXIST" = "号码已存在";
+"PROMPT_CELL_NUM_MODIFIED" = "手机号修改成功";
+"PROMPT_WECHAT_NUM_MODIFIED" = "微信号修改成功";
+"PRMOPT_QQ_NUM_MODIFIED" = "QQ号修改成功";
+
+//错误提示
+"ERROR_ACCOUNT_INCORRECT" = "账号密码错误，请重新输入";
+"ERROR_LOGIN_TIMEOUT" = "登录超时，请检查网络设置";
+"ERROR_RECAPTCHA_INCORRECT" = "验证码输入有误，请重新输入";
+"PROMPT_PASSWORD_CHANGED" = "您的密码已重置";
+"ERROR_RETRIEVE_IMAGE_FAILED" = "获取图像失败，请检查网络设置";
+"ERROR_RETRIEVE_ADDR_FAILED" = "获取用户地址失败，请检查网络设置!";
+"ERROR_SMS_NOT_SUPPORTED" = "该设备不支持短信功能";
+
+//提示信息
+"PROMPT_EMAIL_ACCOUNT" = "您没有设置邮件账户";
+"PROMPT_EMAIL_EDIT_CANCELED" = "您已取消编辑邮件";
+"ERROR_SAVE_SEND_EMAIL_FAILED" = "保存或发送邮件失败";
+"PROMPT_EMAIL_SAVED" = "保存邮件成功";
+"PROMPT_EMAIL_ADD_TO_QUEUE" = "已将邮件放到队列中";
+"ERROR_RETRIEVE_USER_INFO_FAILED" = "获取用户信息失败";
+"ERROR_CELL_NUM_FORMAT_INCORRECT" = "您输入的手机号码格式不正确,请重新输入";
+"ERROR_RECAPTCHA_INCORRECT" = "您输入的验证码不正确，请重新输入!";
+"ERROR_NO_RESULT_FOUND" = "未找到符合条件的数据";
+"ERROR_NO_CAMERA_DETECTED" = "该设备无摄像头";
+"PROMPT_LOADING" = "正在拼命为您加载";
+

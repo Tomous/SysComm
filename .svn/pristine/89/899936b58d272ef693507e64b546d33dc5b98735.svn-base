@@ -1,0 +1,318 @@
+//
+//  DCLoginView.m
+//  maxscreen－1.0
+//
+//  Created by maxscrenn on 15/11/11.
+//  Copyright © 2015年 maxscrenn. All rights reserved.
+//
+
+#import "DCLoginView.h"
+#import "DCAccountTool.h"
+@interface DCLoginView ()<UITextFieldDelegate>{
+    BOOL shadow;
+    UIButton *shadowBtn;
+}
+
+@end
+@implementation DCLoginView
+
+-(instancetype)initWithFrame:(CGRect)frame
+{
+    if (self = [super initWithFrame:frame]) {
+        
+        self.backgroundColor = [UIColor redColor];
+        
+        UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(gesture)];
+        [self addGestureRecognizer:gestureRecognizer];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardAppear:) name:UIKeyboardWillShowNotification object:nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardHide:) name:UIKeyboardWillHideNotification object:nil];
+
+        shadow = YES;
+        
+    }
+    return self;
+}
+
+-(void)layoutSubviews
+{
+    [super layoutSubviews];
+    
+    self.backgroundColor = DCColor(82.0, 82.0, 82.0);
+    UIImageView *backImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 20, self.width, self.height - 20)];
+//    backImageView.image = [UIImage imageNamed:@"u2_normal.png"];
+    backImageView.backgroundColor = DCColor(34.0, 186.0, 190.0);
+    [self addSubview:backImageView];
+    
+    UIImageView *logoImageView = [[UIImageView alloc]init];
+    logoImageView.width = 78;
+    logoImageView.x = (self.width - logoImageView.width) / 2;
+    logoImageView.height = 78;
+    logoImageView.y = 20;
+    logoImageView.image = [UIImage imageNamed:@"用户登录logo"];
+    [backImageView addSubview:logoImageView];
+    
+    UILabel *loginLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(logoImageView.frame) + 35, self.width, 40)];
+    loginLabel.backgroundColor = [UIColor whiteColor];
+    loginLabel.text = NSLocalizedString(@"USER_LOGIN", @"");
+    loginLabel.font = [UIFont systemFontOfSize:20];
+    loginLabel.textAlignment = NSTextAlignmentCenter;
+    loginLabel.textColor = DCTextColor;
+    [self addSubview:loginLabel];
+    
+    
+    _pointImg = [[UIImageView alloc]init];
+    _pointImg.image = [UIImage imageNamed:@"登录错误提示.png"];
+    _pointImg.x = 6;
+    _pointImg.y = CGRectGetMaxY(loginLabel.frame) + 3;
+    _pointImg.width = 20;
+    _pointImg.height = 20;
+    _pointImg.hidden = YES;
+    [self addSubview:_pointImg];
+    
+    _pointLabel = [[UILabel alloc]init];
+    _pointLabel.backgroundColor = [UIColor clearColor];
+    _pointLabel.numberOfLines = 0;
+    NSString *str1 = NSLocalizedString(@"ERROR_INFO_INCORRECT", nil);
+    _pointLabel.text = str1;
+    _pointLabel.textColor = [UIColor redColor];
+    _pointLabel.hidden = YES;
+    CGSize maxSize = CGSizeMake(self.width - 30, 150);
+    NSDictionary *dict = @{NSFontAttributeName : [UIFont systemFontOfSize:18]};
+    CGSize labelSize1 = [str1 boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:dict context:nil].size;
+    _pointLabel.frame = CGRectMake(CGRectGetMaxX(_pointImg.frame), CGRectGetMaxY(loginLabel.frame), labelSize1.width, labelSize1.height);
+    [self addSubview:_pointLabel];
+    
+    _pointLabel2 = [[UILabel alloc]init];
+    _pointLabel2.backgroundColor = [UIColor clearColor];
+    _pointLabel2.numberOfLines = 0;
+    NSString *str2 = NSLocalizedString(@"ERROR_ACCOUNT_FORMAT_INCORRECT", nil);
+//    NSString *str2 = @"dkjfalkjglak";
+    _pointLabel2.text = str2;
+    _pointLabel2.textColor = [UIColor redColor];
+    _pointLabel2.hidden = YES;
+    CGSize labelSize = [str2 boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:dict context:nil].size;
+    _pointLabel2.frame = CGRectMake(_pointLabel.x, _pointLabel.y, labelSize.width, labelSize.height);
+    [self addSubview:_pointLabel2];
+    
+    
+    
+    _pointLabel3 = [[UILabel alloc]init];
+    _pointLabel3.numberOfLines = 0;
+    _pointLabel3.backgroundColor = [UIColor clearColor];
+    NSString *str3 = NSLocalizedString(@"ERROR_PWD_TOO_SHORT", nil);
+    _pointLabel3.text = str3;
+    _pointLabel3.textColor = [UIColor redColor];
+    _pointLabel3.hidden = YES;
+    CGSize labelSize3 = [str3 boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:dict context:nil].size;
+    _pointLabel3.frame = CGRectMake(_pointLabel2.x, _pointLabel2.y, labelSize3.width, labelSize3.height);
+    [self addSubview:_pointLabel3];
+
+    
+    _pointLabel4 = [[UILabel alloc]init];
+    _pointLabel4.numberOfLines = 0;
+    _pointLabel4.backgroundColor = [UIColor clearColor];
+    NSString *str4 = NSLocalizedString(@"ERROR_ACCOUNT_INCORRECT", nil);
+    _pointLabel4.text = str4;
+    _pointLabel4.textColor = [UIColor redColor];
+    _pointLabel4.hidden = YES;
+    CGSize labelSize4 = [str4 boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:dict context:nil].size;
+    _pointLabel4.frame = CGRectMake(_pointLabel2.x, _pointLabel2.y, labelSize4.width, labelSize4.height);
+    [self addSubview:_pointLabel4];
+
+    
+    UIView *userTextView = [[UIView alloc]initWithFrame:CGRectMake(5, CGRectGetMaxY(_pointLabel.frame) + 2, self.width - 10, 45)];
+    userTextView.layer.cornerRadius = 6;
+    userTextView.backgroundColor = [UIColor whiteColor];
+    [self addSubview:userTextView];
+    
+    UIImageView *userImageView = [[UIImageView alloc]initWithFrame:CGRectMake(5, 10, 20, 20)];
+    userImageView.image = [UIImage imageNamed:@"u157_normal.png"];
+    [userTextView addSubview:userImageView];
+    
+    _userTextField = [[UITextField alloc]init];
+    _userTextField.frame = CGRectMake(32, 0, userTextView.width - 36, userTextView.height);
+    _userTextField.backgroundColor = [UIColor whiteColor];
+    _userTextField.returnKeyType = UIReturnKeyDone;
+    _userTextField.placeholder = NSLocalizedString(@"CATION_USERNAME", nil);
+//    _userTextField.keyboardType = UIKeyboardTypeEmailAddress;
+    _userTextField.textColor = DCTextFieldColor;
+//    _userTextField.text = @"xudacheng@maxscreen.cn";
+    _userTextField.text = [DCAccountTool getUsers];
+    _userTextField.font = [UIFont systemFontOfSize:15];
+    _userTextField.clearButtonMode = UITextFieldViewModeAlways;
+    _userTextField.delegate = self;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_userTextFieldDidChange) name:UITextFieldTextDidChangeNotification object:_userTextField];
+    [userTextView addSubview:_userTextField];
+    
+    
+    UIView *passWdTextView = [[UIView alloc]initWithFrame:CGRectMake(5, CGRectGetMaxY(userTextView.frame) + 10, self.width - 10, 45)];
+    passWdTextView.layer.cornerRadius = 6;
+    passWdTextView.backgroundColor = [UIColor whiteColor];
+    [self addSubview:passWdTextView];
+    
+    UIImageView *passWdImageView = [[UIImageView alloc]initWithFrame:CGRectMake(5, 10, 20, 20)];
+    passWdImageView.image = [UIImage imageNamed:@"密码锁.png"];
+    [passWdTextView addSubview:passWdImageView];
+    
+    _passWordTextField = [[UITextField alloc]initWithFrame:CGRectMake(32, 0, passWdTextView.width - 39, passWdTextView.height)];
+    _passWordTextField.backgroundColor = [UIColor whiteColor];
+    _passWordTextField.secureTextEntry = YES;
+    _passWordTextField.returnKeyType = UIReturnKeyDone;
+    _passWordTextField.placeholder = NSLocalizedString(@"CAPTION_PASSWORD", nil);
+//    _passWordTextField.text = @"a123456";
+    _passWordTextField.font = [UIFont systemFontOfSize:15];
+    _passWordTextField.delegate = self;
+    _passWordTextField.textColor = DCTextFieldColor;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_passWordTextFieldDidChange) name:UITextFieldTextDidChangeNotification object:_passWordTextField];
+    shadowBtn = [[UIButton alloc]initWithFrame:CGRectMake(_passWordTextField.width - 35, _passWordTextField.y + 10, 17, 14)];
+    [shadowBtn setBackgroundImage:[UIImage imageNamed:@"登录不显示密码眼睛.png"] forState:UIControlStateNormal];
+    [shadowBtn addTarget:self action:@selector(shadowBtnDidClick) forControlEvents:UIControlEventTouchUpInside];
+    _passWordTextField.rightView = shadowBtn;
+    _passWordTextField.rightViewMode = UITextFieldViewModeAlways;
+    [passWdTextView addSubview:_passWordTextField];
+    
+    /**
+        验证码输入框
+     */
+    _inputTextField = [[UITextField alloc]initWithFrame:CGRectMake(5, CGRectGetMaxY(passWdTextView.frame) +25, self.width / 3, 40)];
+    _inputTextField.delegate = self;
+    _inputTextField.borderStyle = UITextBorderStyleRoundedRect;
+    _inputTextField.returnKeyType = UIReturnKeyDone;
+    _inputTextField.backgroundColor = [UIColor whiteColor];
+    _inputTextField.keyboardType = UIKeyboardTypeAlphabet;
+    _inputImageView = [[UIImageView alloc]init];
+    _inputImageView.width = _inputTextField.width / 6;
+    _inputImageView.height= _inputImageView.width;
+    _inputImageView.image = [UIImage imageNamed:@"登录错误提示.png"];
+    _inputImageView.hidden = YES;
+//    _inputTextField.rightView = _inputImageView;
+    _inputTextField.rightViewMode = UITextFieldViewModeAlways;
+    _inputTextField.placeholder = NSLocalizedString(@"CAPTION_RECAPTCHA", nil);
+    _inputTextField.textColor = DCTextFieldColor;
+    _inputTextField.font = [UIFont systemFontOfSize:11];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_inputTextFieldDidChange) name:UITextFieldTextDidChangeNotification object:_inputTextField];
+    [self addSubview:_inputTextField];
+    
+    
+    _codeView = [[DCCodeView alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_inputTextField.frame) + 10, _inputTextField.y + 3, self.width / 4, 34)];
+    _codeView.backgroundColor = kRandomColor;
+    [self addSubview:_codeView];
+    
+    
+    UIButton *checkBtn = [[UIButton alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_codeView.frame) +10, _codeView.y, self.width / 3, 34)];
+    [checkBtn setTitle:NSLocalizedString(@"RECAPTCHA_REFRESH", nil) forState:UIControlStateNormal];
+    [checkBtn setTitleColor:DCTextColor forState:UIControlStateNormal];
+    checkBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+    [checkBtn addTarget:self action:@selector(checkBtnDidCkick) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:checkBtn];
+    
+    _loginBtn = [[UIButton alloc]init];
+    _loginBtn.enabled = NO;
+    _loginBtn.frame = CGRectMake(5, CGRectGetMaxY(_inputTextField.frame) +20, self.width - 10, 50);
+    _loginBtn.layer.cornerRadius = 7;
+    [_loginBtn setTitle:NSLocalizedString(@"LOGIN", nil) forState:UIControlStateNormal];
+    [_loginBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+//    [_loginBtn setBackgroundImage:[UIImage imageNamed:@"u1251_normal.png"] forState:UIControlStateNormal];
+    _loginBtn.backgroundColor = DCColor(235.0, 235.0, 235.0);
+    [_loginBtn addTarget:self action:@selector(loginBtnDidClick) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:_loginBtn];
+    
+    UIButton *backPassWordBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_loginBtn.frame) + 15, self.width, 25)];
+    [backPassWordBtn setTitle:NSLocalizedString(@"LOST_PASSWORD", nil) forState:UIControlStateNormal];
+    backPassWordBtn.titleLabel.font = [UIFont systemFontOfSize:15];
+    [backPassWordBtn setTitleColor:DCTextColor forState:UIControlStateNormal];
+    [backPassWordBtn addTarget:self action:@selector(backPassWordBtnDidClick) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:backPassWordBtn];
+    
+}
+
+#pragma mark - methods
+-(void)keyboardAppear:(NSNotification *)noti
+{
+    CGRect frame = self.frame;
+    frame.origin.y = -80;
+    self.frame = frame;
+}
+
+-(void)keyboardHide:(NSNotification *)noti
+{
+    [UIView animateWithDuration:1.0 animations:^{
+        CGRect frame = self.frame;
+        frame.origin.y = 0;
+        self.frame = frame;
+    }];
+}
+
+-(void)gesture
+{
+    DCLog(@"gesture");
+    [_inputTextField resignFirstResponder];
+    [_userTextField resignFirstResponder];
+    [_passWordTextField resignFirstResponder];
+}
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
+
+/**
+ *  密码可见或不可见
+ */
+-(void)shadowBtnDidClick
+{
+    if (shadow) {
+        [shadowBtn setBackgroundImage:[UIImage imageNamed:@"shadow.png"] forState:UIControlStateNormal];
+        shadow = NO;
+        _passWordTextField.secureTextEntry = NO;
+    }
+    else
+    {
+        [shadowBtn setBackgroundImage:[UIImage imageNamed:@"hidden.png"] forState:UIControlStateNormal];
+        shadow = YES;
+        _passWordTextField.secureTextEntry = YES;
+        
+    }
+}
+/**
+ *  刷新验证码
+ */
+-(void)checkBtnDidCkick
+{
+    
+    [_codeView checkCodeBtnDidClick];
+    
+}
+/**
+ *  登录按钮点击
+ */
+-(void)loginBtnDidClick
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"DCloginBtnDidClickNotification" object:nil];;    
+}
+/**
+ *  监听手机号是否为空 1 :按钮不可点击
+ */
+-(void)_userTextFieldDidChange
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"dddd" object:nil];
+}
+-(void)_passWordTextFieldDidChange
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"dddd" object:nil];
+}
+-(void)_inputTextFieldDidChange
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"dddd" object:nil];
+}
+/**
+ *  找回密码
+ */
+-(void)backPassWordBtnDidClick
+{
+    NSLog(@"backPassWordBtn");
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"DCloginBtnNotificationCenter" object:nil];
+}
+@end

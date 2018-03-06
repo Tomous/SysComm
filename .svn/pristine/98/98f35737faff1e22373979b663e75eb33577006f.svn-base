@@ -1,0 +1,141 @@
+/* 
+  Localizable.strings
+  讯通
+
+  Created by 许大成 on 16/1/11.
+  Copyright © 2016年 许大成. All rights reserved.
+*/
+
+"MAXSCREEN_LOGOING" = "Max Screen Beijing Distribution Co. Ltd.";
+
+//tabBar
+"TABBAR_CONTACTS" = "COLLEAGUE";
+"TABBAR_RECENT" = "RECENT";
+"TABBAR_SEARCH" = "SEARCH";
+"TABBAR_PERSONAL" = "PROFILE";
+
+//登录页面
+"USER_LOGIN" = "USER LOGIN";
+"CATION_USERNAME" = "Cellphone number or email address";
+"CAPTION_PASSWORD" = "Password";
+"CAPTION_RECAPTCHA" = "*  *  *  *";
+"RECAPTCHA_REFRESH" = "Refresh picture";
+"LOGIN" = "Login";
+"LOST_PASSWORD" = "Forgot Password";
+"ERROR_INFO_INCORRECT" = "The info you entered is incorrect, please try again!";
+"ERROR_ACCOUNT_FORMAT_INCORRECT" = "The account format is incorrect, please try again!";
+"ERROR_PWD_TOO_SHORT" = "The password is too short, please try again!";
+
+//找回密码页面;;
+"FULLNAME" = "Full Name :";
+"CAPTION_FULLNAME" = "Your full name please";
+"PWD_CELL_NUM" = "Cellphone:";
+"CAPTION_CELL_NUM" = "Your cellphone number please";
+"IDNUM" = "ID Number:";
+"CAPTION_IDNUM" = "Your ID number please";
+"BACK" = "Back";
+
+//通讯录首页
+"CONTACTS" = "CONTACTS";
+"LATEST_COLL" = "New Colleague";
+"RECENT_VIEWED" = "Recent Viewed";
+"MORE" = "More";
+"CLEAR_HISTORY" = "Clear History";
+"SURE_CLEAR_HISTORY" = "Are you sure to clear history?";
+"OK" = "OK";
+"CANCEL" = "Cancel";
+"NO_VIEWED_RECORD" = "No viewed record";
+"DEL" = "Delete";
+"PROMPT_DEL_VIEW_ITEM" = "Delete this viewed record";
+"PERSONLIST_HOME" = "Dept Colleague";
+
+//搜索页面
+"CAPTION_SEARCH" = "Name or number please";
+"SEARCH_CONTACTSE" = "SEARCH COLLEAGUE";
+
+//同事资料页面
+"CONTACT_COLL" = "CONTACT COLLEAGUE";
+"AGO_MINUTE" = "minute(s) ago";
+"AGO_HOUR" = "hour(s) ago";
+"AGO_DAY" = "day(s) ago";
+"AGO_MONTH" = "one month ago";
+"PROMPT_LACK_TEL_NUM" = "The colleague has NO phone number provided currently.";
+"PROMPT_LACK_CELL_NUM" = "The colleague has NO cellphone number provided currently.";
+"PROMPT_LACK_EMAIL_NUM" = "The colleague has NO email address provided currently.";
+"PROMPT_LACK_WECHAT_NUM" = "The colleague has NO WeChat number provided currently.";
+"PROMPT_LACK_QQ_NUM" = "The colleague has NO QQ number provided currently.";
+"RELATION_TEL_NUM" = "Dial Phone Number";
+"RELATION_CELL_NUM" = "Dial Cellphone Number";
+"RELATION_SEND_SMS" = "Send Text Message";
+"PREFIX_SMS" = "Hello, this is ";
+"RELATION_SEND_EMAIL" = "Send E-mail";
+"RELATION_WECHAT_NUM" = "Contact via WeChat";
+"RELATION_QQ_NUM" = "Contact via QQ";
+"PROMPT_WECHAT_NUM_COPIED" = "The WeChat number is copied.";
+"PROMPT_QQ_NUM_COPIED" = "The QQ number is copied.";
+"ERROR_QQ_NOT_INSTALLED" = "Your cellphone has NO QQ app installed!";
+"PERSONAL_MESSAGE" = "This user is no longer available!";
+
+//个人资料页面
+"PROFILE" = "PROFILE";
+"CELL_NUM" = "Cellphone No. :";
+"WECHAT_NUM" = "WeChat No. :";
+"QQ_NUM" = "Q Q  No. :";
+"USE_CAMERA" = "Use Camera";
+"CHOOSE_PHOTOS" = "Choose from Photos";
+"CANCEL" = "Cancel";
+"CHANGE_PASSWORD" = "Change PWD";
+"LOGOUT" = "Logout";
+
+//修改密码页面
+"CURRENT_PASSWORD" = "Curr PWD:";
+"CAPTION_CURRENT_PASSWORD" = "Your current password please!";
+"NEW_PASSWORD" = "New PWD:";
+"CAPTION_NEW_PASSWORD" = "New password please!";
+"REPEAT_PASSWORD" = "Repeat PWD:";
+"CAPTION_REPEAT_PASSWORD" = "Repeat the new password please!";
+"SHOW_PASSWORD" = "Show PWD";
+"ERROR_PASSWD_LENGTH" = "Password must be at least 6 characters, please try again!";
+"ERROR_NEWPASSWD_AND_OLDPASSWD" = "The new password can NOT be identical to the current password!";
+"ERROR_INFO_PASSWD" = "The password you entered is incorrect, please try again!";
+"ERROR_OLDPWD_AND_NEWPWD" = "The two passwords don't match Please input again！";
+"CHANGE" = "Change";
+
+//退出登录页面
+"PROMPT_LOGOUT" = "Are you sure to logout?";
+"YES" = "Yes";
+
+//验证手机号页面
+"VERIFY_CELL_NUM" = "VERIFY CELL NO.";
+"PROMPT_VERIFY_CELL_NUM" = "Press the Obtain button to receive text message with the verify code.";
+"CAPTION_VERIFY_CODE" = "Verify code";
+"OBTAIN_VERIFY_CODE" = "Obtain";
+"RESEND" = "Resend";
+"PROMPT_VERIFY_CODE_SEND" = "The verify code has been sent to you via text message.";
+"VERIFY" = "Verify";
+"ERROR_NUM_EXIST" = "The cellphone number already exists!";
+"PROMPT_CELL_NUM_MODIFIED" = "Your cellphone number successfully modified!";
+"PROMPT_WECHAT_NUM_MODIFIED" = "Your WeChat number successfully modified!";
+"PRMOPT_QQ_NUM_MODIFIED" = "Your QQ number successfully modified!";
+
+//错误提示
+"ERROR_ACCOUNT_INCORRECT" = "The account info you entered are incorrect, please try again!";
+"ERROR_LOGIN_TIMEOUT" = "Login timeout, please check your network settings!";
+"ERROR_RECAPTCHA_INCORRECT" = "The recaptcha you entered is incorrect, please try again!";
+"PROMPT_PASSWORD_CHANGED" = "Your password successfully changed! ";
+"ERROR_RETRIEVE_IMAGE_FAILED" = "Fail to retrieve images, please check your network settings!";
+"ERROR_RETRIEVE_ADDR_FAILED" = "Fail to retrieve user address, please check your network settings!";
+"ERROR_SMS_NOT_SUPPORTED" = "This device does NOT support text message!";
+
+//提示信息
+"PROMPT_NO_EMAIL_ACCOUNT" = "You have NOT set your email account yet!";
+"PROMPT_EMAIL_EDIT_CANCELED" = "You canceled email editing!";
+"ERROR_SAVE_SEND_EMAIL_FAILED" = "Fail to save or send email!";
+"PROMPT_EMAIL_SAVED" = "Email successfully saved!";
+"PROMPT_EMAIL_ADD_TO_QUEUE" = "Email successfully added to queue!";
+"ERROR_RETRIEVE_USER_INFO_FAILED" = "Fail to retrieve user info!";
+"ERROR_CELL_NUM_FORMAT_INCORRECT" = "The cellphone number format is incorrect, please try again!";
+"ERROR_NO_RESULT_FOUND" = "No match result found!";
+"ERROR_NO_CAMERA_DETECTED" = "This device has NO camera!";
+"PROMPT_LOADING" = "Loading …";
+

@@ -1,0 +1,56 @@
+//
+//  DCUserLocalTool.m
+//  maxscreen－1.0
+//
+//  Created by maxscrenn on 15/11/27.
+//  Copyright © 2015年 maxscrenn. All rights reserved.
+//
+
+#import "DCUserLocalTool.h"
+#import "DCNewFriendsModel.h"
+
+#define DCRecentDealsPath [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"recentDeals.data"]
+
+@implementation DCUserLocalTool
+
+static NSMutableArray *_historyDeals;
++(NSMutableArray *)recentFriends
+{
+    if (!_historyDeals) {
+        
+        _historyDeals = [NSKeyedUnarchiver unarchiveObjectWithFile:DCRecentDealsPath];
+        if (!_historyDeals) {
+            _historyDeals = [NSMutableArray array];
+        }
+    }
+    return _historyDeals;
+}
+
++(void)saveRecentFriend:(DCNewFriendsModel *)newFriend
+{
+    [self recentFriends];
+    [_historyDeals removeObject:newFriend];
+    [_historyDeals insertObject:newFriend atIndex:0];
+    [NSKeyedArchiver archiveRootObject:_historyDeals toFile:DCRecentDealsPath];
+}
+
++(void)deleteRecentFriend:(DCNewFriendsModel *)newFriend
+{
+    [_historyDeals removeObject:newFriend];
+    [NSKeyedArchiver archiveRootObject:_historyDeals toFile:DCRecentDealsPath];
+}
++(void)deleteRecentFriends:(NSArray *)newFriends
+{
+    [_historyDeals removeObjectsInArray:newFriends];
+    [NSKeyedArchiver archiveRootObject:_historyDeals toFile:DCRecentDealsPath];
+    
+}
+
+
+
+
+
+
+
+
+@end
